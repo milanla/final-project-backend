@@ -1,6 +1,6 @@
 class Api::V1::AuthController < ApplicationController
 
-  skip_before_action :authorized, only: [:create, :index]
+  skip_before_action :authorized, only: [:create]
 
   def create
     @user = User.find_by(username: login_user_params[:username])
@@ -13,7 +13,7 @@ class Api::V1::AuthController < ApplicationController
   end
 
   def show
-    id = request.authorization.to_i
+    id = decode_token["id"]
     user = User.find(id)
     if user
       render json: { user: user }, status: 200

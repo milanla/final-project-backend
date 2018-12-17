@@ -7,6 +7,7 @@ class ApplicationController < ActionController::API
   end
 
   def decode_token
+
     if get_token
 
       begin
@@ -23,8 +24,8 @@ class ApplicationController < ActionController::API
 
   def current_user
     if decode_token
-      username = decode_token[0]['username']
-      @user = User.find_by(username: username)
+      id = decode_token["id"]
+      @user = User.find(id)
     end
   end
 
