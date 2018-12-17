@@ -14,9 +14,9 @@ class Api::V1::AuthController < ApplicationController
 
   def show
     id = decode_token["id"]
-    user = User.find(id)
-    if user
-      render json: { user: user }, status: 200
+    @user = User.find(id)
+    if @user
+      render json: { user: @user }, status: 200
     else
       render json: { error: 'user not found' }, status: 422
     end
