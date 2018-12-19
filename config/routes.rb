@@ -7,4 +7,7 @@ Rails.application.routes.draw do
       post '/login', to: "auth#create"
     end
   end
+
+  get '/slang/:term', to: "slangs#search"
+
 end
