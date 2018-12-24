@@ -4,7 +4,7 @@ class UrbanscraperAdapter
     split = search_term.split
     join = split.join("%20")
 
-    response = RestClient.get("http://urbanscraper.herokuapp.com/define/#{join}")
+    response = RestClient.get("http://urbanscraper.herokuapp.com/search/#{join}")
     json_response = JSON.parse(response.body)
     return json_response
   end
