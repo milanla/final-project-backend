@@ -2,12 +2,8 @@
 
 one:
   user: one
-  term: MyString
-  definition: MyString
-  example: MyString
+  slang: one
 
 two:
   user: two
-  term: MyString
-  definition: MyString
-  example: MyString
+  slang: two

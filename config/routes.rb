@@ -8,6 +8,10 @@ Rails.application.routes.draw do
     end
   end
 
+  get '/:username/slangs', to: "slangs#user_slangs"
   get '/slang/:term', to: "slangs#search"
+
+  resources :slangs
+  resources :likes
 
 end

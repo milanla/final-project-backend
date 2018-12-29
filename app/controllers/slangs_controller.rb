@@ -20,6 +20,13 @@ class SlangsController < ApplicationController
     render json: @slang
   end
 
+  def user_slangs
+    @user = User.find_by_username(params["username"])
+    @user_slangs = @user.slangs
+    
+    render json: @user_slangs
+  end
+
   def search
     @search_res = UrbanscraperAdapter.get_slang(params[:term])
 
@@ -29,7 +36,7 @@ class SlangsController < ApplicationController
   private
 
   def slang_params
-    params.require(:slang).permit(:term, :definition, :example)
+    params.require(:slang).permit(:user_id, :term, :definition, :example)
   end
 
 end
