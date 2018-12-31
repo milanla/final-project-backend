@@ -23,7 +23,7 @@ class SlangsController < ApplicationController
   def user_slangs
     @user = User.find_by_username(params["username"])
     @user_slangs = @user.slangs
-    
+
     render json: @user_slangs
   end
 
@@ -31,6 +31,14 @@ class SlangsController < ApplicationController
     @search_res = UrbanscraperAdapter.get_slang(params[:term])
 
     render json: @search_res
+  end
+
+  def destroy
+    # byebug
+    @slang = Slang.find(params[:id])
+    @slang.destroy
+
+    render json: { "message" => "slang has been deleted" }
   end
 
   private
