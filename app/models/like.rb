@@ -1,4 +1,4 @@
 class Like < ApplicationRecord
   belongs_to :user
-  belongs_to :slang
+  belongs_to :liked_slang
 end

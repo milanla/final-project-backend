@@ -10,17 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_27_013812) do
+ActiveRecord::Schema.define(version: 2019_01_02_204200) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "likes", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "slang_id"
+  create_table "liked_slangs", force: :cascade do |t|
+    t.string "author"
+    t.string "term"
+    t.string "definition"
+    t.string "example"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["slang_id"], name: "index_likes_on_slang_id"
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "liked_slang_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["liked_slang_id"], name: "index_likes_on_liked_slang_id"
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
@@ -41,7 +50,7 @@ ActiveRecord::Schema.define(version: 2018_12_27_013812) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "likes", "slangs"
+  add_foreign_key "likes", "liked_slangs"
   add_foreign_key "likes", "users"
   add_foreign_key "slangs", "users"
 end

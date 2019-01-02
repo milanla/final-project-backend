@@ -2,8 +2,8 @@
 
 one:
   user: one
-  slang: one
+  liked_slang: one
 
 two:
   user: two
-  slang: two
+  liked_slang: two
