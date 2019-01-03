@@ -13,7 +13,7 @@ class LikedSlangsController < ApplicationController
   end
 
   def destroy
-    @liked_slang = LikedSlang.find(params[:id])
+    @liked_slang = Like.find_by(liked_slang_id: params[:id])
     # byebug
     @liked_slang.destroy
 
